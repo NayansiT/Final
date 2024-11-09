@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Status</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/application_status.css' %}">
+</head>
+<body>
+    <h1>Application Status</h1>
+
+    <div class="status-details">
+        {% if application %}
+            <h2>Application Details</h2>
+            <p><strong>Applied On:</strong> {{ application.application_date|date:"d M Y H:i" }}</p>
+            <p><strong>Status:</strong> {{ application.status }}</p>
+            {% if application.status == 'Accepted' %}
+            {% endif %}
+            
+        {% else %}
+            <p>You have not applied yet.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'user_home' %}" class="back-button">Back to Home</a>
+</body>
+</html>

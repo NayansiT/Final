@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    {% load static %}  <!-- Load static files -->
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">  <!-- Link to your CSS file -->
+</head>
+<body>
+
+<div class="register-container">
+    <h1>Register</h1>
+
+    <form method="POST" class="register-form">
+        {% csrf_token %}
+        
+        <!-- Name Field -->
+        <label for="name">Name:</label>
+        {{ form.name }}
+        {% if form.name.errors %}
+            <div class="error">{{ form.name.errors }}</div>
+        {% endif %}
+
+        <!-- Username Field -->
+        <label for="username">Username:</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div class="error">{{ form.username.errors }}</div>
+        {% endif %}
+
+        <!-- Email Field -->
+        <label for="email">Email:</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <div class="error">{{ form.email.errors }}</div>
+        {% endif %}
+
+        <!-- Password Field -->
+        <label for="password">Password:</label>
+        {{ form.password }}
+        {% if form.password.errors %}
+            <div class="error">{{ form.password.errors }}</div>
+        {% endif %}
+
+        <!-- Confirm Password Field -->
+        <label for="password2">Confirm Password:</label>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+            <div class="error">{{ form.password2.errors }}</div>
+        {% endif %}
+
+        <!-- Add class to the Confirm Password Field -->
+        <div class="confirm-password"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="register-button">Register</button>
+    </form>
+
+    <a href="{% url 'home' %}" class="back-home">Back to Home</a>
+</div>
+
+</body>
+</html>

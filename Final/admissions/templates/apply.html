@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply for Hostel</title>
+
+    {% load static %}  <!-- Load static files -->
+    <link rel="stylesheet" href="{% static 'css/apply.css' %}">  <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <h1>Apply for Hostel</h1>
+
+    {% if application_exists %}
+    <p class="message">You have already applied for a hostel.</p>
+    <div class="application-details">
+        <h2>Your Application:</h2>
+        <p><strong>First Name:</strong> <span>{{ application.first_name }}</span></p>
+        <p><strong>Middle Name:</strong> <span>{{ application.middle_name }}</span></p>
+        <p><strong>Last Name:</strong> <span>{{ application.last_name }}</span></p>
+        <p><strong>Date of Birth:</strong> <span>{{ application.dob }}</span></p>
+        <p><strong>Phone No:</strong> <span>{{ application.phone }}</span></p>
+        <p><strong>Course:</strong> <span>{{ application.course }}</span></p>
+        <p><strong>City:</strong> <span>{{ application.city }}</span></p>
+        <p><strong>Category:</strong> <span>{{ application.category }}</span></p>
+        <p><strong>Marks:</strong> <span>{{ application.marks }}</span></p>
+        <p><strong>Scorecard:</strong> <a href="{{ application.scorecard.url }}">{{ application.scorecard.name }}</a></p>
+        <a href="{% url 'user_home' %}" class="button">Back to Dashboard</a> <!-- Button to redirect -->
+    </div>
+    {% else %}
+        <form method="POST" enctype="multipart/form-data" class="application-form">
+            {% csrf_token %}
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="middle_name">Middle Name:</label>
+            <input type="text" id="middle_name" name="middle_name">
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="phone">Phone No:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="SC">Scheduled Castes (SC)</option>
+                <option value="ST">Scheduled Tribes (ST)</option>
+                <option value="OBC">Other Backward Classes</option>
+                <option value="OG">Open/General</option>
+            </select>
+
+            <label for="marks">Marks:</label>
+            <input type="number" id="marks" name="marks" required>
+
+            <label for="scorecard">Scorecard:</label>
+            <input type="file" id="scorecard" name="scorecard" required>
+
+            <button type="submit" class="button">Submit Application</button>
+        </form>
+    {% endif %}
+</body>
+</html>

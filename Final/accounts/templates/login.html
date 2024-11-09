@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}  <!-- Load static files -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">  <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" required><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" required><br>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <p class="register-link">If you don't have an account, <a href="{% url 'register' %}">Register here</a>.</p>
+    </div>
+</body>
+</html>

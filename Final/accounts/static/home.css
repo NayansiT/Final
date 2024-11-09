@@ -1,0 +1,48 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d1d3d5; /* Darker gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; /* Center text within body */
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px; /* Slightly larger border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+    max-width: 400px; /* Limit width for better aesthetics */
+    width: 90%; /* Responsive width */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 24px; /* Increase font size */
+}
+
+a {
+    display: inline-block;
+    margin: 10px 0; /* Vertical margin for links */
+    padding: 12px 20px; /* Increased padding for better touch targets */
+    text-decoration: none;
+    color: white;
+    background-color: #007bff; /* Bootstrap primary color */
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+p {
+    color: #555; /* Darker text color */
+    margin-top: 15px;
+    font-size: 14px; /* Slightly larger font size */
+}

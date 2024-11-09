@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System</title>
+    
+    {% load static %}  <!-- Load static files -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Hostel Management System</h1>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'rector_login' %}">Rector Login</a>
+
+        <p>Please log in or register to apply for a hostel.</p>
+    </div>
+</body>
+</html>
